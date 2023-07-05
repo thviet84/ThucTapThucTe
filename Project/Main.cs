@@ -8,14 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CsvHelper;
-using OfficeOpenXml;
 using System.IO;
-using System.Globalization;
-using OfficeOpenXml.Core.ExcelPackage;
 using Excel = Microsoft.Office.Interop.Excel;
-using QRCoder;
-using ZXing.Common;
 using ZXing;
 using ZXing.QrCode;
 using ZXing.Datamatrix;
@@ -23,11 +17,8 @@ using System.Diagnostics;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
-using ExcelPackage = OfficeOpenXml.ExcelPackage;
-using ExcelDataReader;
 using ZXing.QrCode.Internal;
 using Image = iTextSharp.text.Image;
-using QRCode = QRCoder.QRCode;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using Unidecode.NET;
@@ -44,7 +35,7 @@ namespace Project
         public Main()
         {
             InitializeComponent();
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            
         }
 
         //Chọn file

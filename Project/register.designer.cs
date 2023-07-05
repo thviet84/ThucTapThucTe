@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    partial class Login
+    partial class Register
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.txtTK = new System.Windows.Forms.TextBox();
             this.btn_Login = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
@@ -40,21 +40,24 @@ namespace Project
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtConfirmMK = new System.Windows.Forms.TextBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.txtMK = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -73,9 +76,9 @@ namespace Project
             resources.ApplyResources(this.btn_Login, "btn_Login");
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.UseVisualStyleBackColor = false;
-            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
-            this.btn_Login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_Login_KeyDown);
-            this.btn_Login.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.btn_Login.Click += new System.EventHandler(this.btn_Register_Click);
+            
+            this.btn_Login.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // btn_Exit
             // 
@@ -95,7 +98,7 @@ namespace Project
             this.panel1.Controls.Add(this.pictureBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // label4
             // 
@@ -117,6 +120,7 @@ namespace Project
             // 
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.btn_Login);
             this.panel2.Controls.Add(this.pictureBox4);
             this.panel2.Controls.Add(this.panel4);
@@ -124,32 +128,60 @@ namespace Project
             this.panel2.Controls.Add(this.btn_Exit);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.txtConfirmMK);
+            this.panel5.Controls.Add(this.pictureBox7);
+            resources.ApplyResources(this.panel5, "panel5");
+            this.panel5.Name = "panel5";
+            // 
+            // txtConfirmMK
+            // 
+            this.txtConfirmMK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtConfirmMK, "txtConfirmMK");
+            this.txtConfirmMK.Name = "txtConfirmMK";
+            this.txtConfirmMK.UseSystemPasswordChar = true;
+            this.txtConfirmMK.Click += new System.EventHandler(this.txtConfirmMK_Click);
+            // 
+            // pictureBox7
+            // 
+            resources.ApplyResources(this.pictureBox7, "pictureBox7");
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.TabStop = false;
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::Project.Properties.Resources.registered;
             resources.ApplyResources(this.pictureBox4, "pictureBox4");
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.txtMK);
             this.panel4.Controls.Add(this.pictureBox3);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
-            // 
-            // pictureBox5
-            // 
-            resources.ApplyResources(this.pictureBox5, "pictureBox5");
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseDown);
-            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseUp);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // txtMK
             // 
@@ -158,7 +190,7 @@ namespace Project
             this.txtMK.Name = "txtMK";
             this.txtMK.UseSystemPasswordChar = true;
             this.txtMK.Click += new System.EventHandler(this.txtMK_Click);
-            this.txtMK.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.txtMK.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // pictureBox3
             // 
@@ -173,7 +205,7 @@ namespace Project
             this.panel3.Controls.Add(this.txtTK);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             // 
             // pictureBox2
             // 
@@ -181,21 +213,7 @@ namespace Project
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Login
+            // Register
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -204,18 +222,20 @@ namespace Project
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Login";
-            this.Load += new System.EventHandler(this.Login_Load_1);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.Name = "Register";
+            this.Load += new System.EventHandler(this.Register_Load_1);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -239,7 +259,9 @@ namespace Project
         private PictureBox pictureBox2;
         private TextBox txtMK;
         private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
+        private Panel panel5;
+        private TextBox txtConfirmMK;
+        private PictureBox pictureBox7;
         private Label label1;
         private Button button1;
     }

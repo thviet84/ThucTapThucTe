@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class Login : Form
+    public partial class Register : Form
     {
-        public Login()
+        public Register()
         {
             InitializeComponent();
             
@@ -27,83 +27,73 @@ namespace Project
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        private void btn_Login_Click(object sender, EventArgs e)
+        private void btn_Register_Click(object sender, EventArgs e)
         {
             try
             {
                 db.OpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM taikhoan WHERE tentaikhoan= @Username AND matkhau= @Userpass", db.con);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                if (txtMK.Text != txtConfirmMK.Text)
+                {
+                    MessageBox.Show("Mật khẩu và xác nhận mật khẩu không khớp!");
+                    return;
+                }
+
+                SqlCommand checkUserCmd = new SqlCommand("SELECT COUNT(*) FROM taikhoan WHERE tentaikhoan = @Username", db.con);
+                checkUserCmd.Parameters.AddWithValue("@Username", txtTK.Text);
+                int existingUserCount = (int)checkUserCmd.ExecuteScalar();
+
+                if (existingUserCount > 0)
+                {
+                    MessageBox.Show("Tài khoản đã tồn tại!");
+                    return; 
+                }
+
+                // Tạo SqlCommand để thực hiện truy vấn INSERT vào cơ sở dữ liệu
+                SqlCommand insertCmd = new SqlCommand("INSERT INTO taikhoan (tentaikhoan, matkhau) VALUES (@Username, @Userpass)", db.con);
 
                 SqlParameter p1 = new SqlParameter("@Username", SqlDbType.NVarChar);
                 p1.Value = txtTK.Text;
                 SqlParameter p2 = new SqlParameter("@Userpass", SqlDbType.NVarChar);
                 p2.Value = txtMK.Text;
 
-                cmd.Parameters.Add(p1);
-                cmd.Parameters.Add(p2);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read() == true)
-                {
+                insertCmd.Parameters.Add(p1);
+                insertCmd.Parameters.Add(p2);
 
-                    Form frm2 = new HomePage();
-                    frm2.Show();
+                // Thực hiện truy vấn INSERT
+                int rowsAffected = insertCmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Đăng ký thành công!");
+                    Form login = new Login();
+                    login.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!");
+                    MessageBox.Show("Đăng ký thất bại!");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex);
             }
+            finally
+            {
+                db.CloseConnection();
+            }
         }
+
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btn_Login_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                try
-                {
-                    db.OpenConnection();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM taikhoan WHERE tentaikhoan= @Username AND matkhau= @Userpass", db.con);
-                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+        
 
-                    SqlParameter p1 = new SqlParameter("@Username", SqlDbType.NVarChar);
-                    p1.Value = txtTK.Text;
-                    SqlParameter p2 = new SqlParameter("@Userpass", SqlDbType.NVarChar);
-                    p2.Value = txtMK.Text;
-
-                    cmd.Parameters.Add(p1);
-                    cmd.Parameters.Add(p2);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read() == true)
-                    {
-
-                        Form frm2 = new HomePage();
-                        frm2.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi: " + ex);
-                }
-            }
-        }
-
-        private void Login_Load_1(object sender, EventArgs e)
+        private void Register_Load_1(object sender, EventArgs e)
         {
 
         }
@@ -114,6 +104,8 @@ namespace Project
             panel3.BackColor = Color.White;
             txtMK.BackColor = SystemColors.Control;
             panel4.BackColor = SystemColors.Control;
+            txtConfirmMK.BackColor = SystemColors.Control;
+            panel5.BackColor = SystemColors.Control;
             
         }
 
@@ -123,8 +115,18 @@ namespace Project
             panel4.BackColor = Color.White;
             txtTK.BackColor = SystemColors.Control;
             panel3.BackColor = SystemColors.Control;
+            txtConfirmMK.BackColor = SystemColors.Control;
+            panel5.BackColor = SystemColors.Control;
         }
-
+        private void txtConfirmMK_Click(object sender, EventArgs e)
+        {
+            txtMK.BackColor = SystemColors.Control;
+            panel4.BackColor = SystemColors.Control;
+            txtTK.BackColor = SystemColors.Control;
+            panel3.BackColor = SystemColors.Control;
+            txtConfirmMK.BackColor = Color.White;
+            panel5.BackColor = Color.White;
+        }
         private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
         {
             txtMK.UseSystemPasswordChar = false;
@@ -135,7 +137,7 @@ namespace Project
             txtMK.UseSystemPasswordChar = true;
         }
 
-        private void Login_MouseMove(object sender, MouseEventArgs e)
+        private void Register_MouseMove(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
@@ -148,9 +150,10 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form register = new Register();
-            register.Show();
+            Form login = new Login();
+            login.Show();
             this.Hide();
         }
+       
     }
 }
