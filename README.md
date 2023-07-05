@@ -37,8 +37,10 @@
 ## Hướng dẫn sử dụng
 
 - Mở dự án trong Visual Studio.
-- Chỉnh sửa mã nguồn của dự án theo yêu cầu của bạn.
-- Xây dựng và chạy ứng dụng để kiểm tra kết quả.
+- Chỉnh sửa "Data Source" và "Database" trong file db.cs để kết nối cơ sở.
+- Xây dựng và chạy ứng dụng: Nhấp vào nút "Start" hoặc nhấn phím F5 để xây dựng và chạy ứng dụng.
+
+
 
 
 
