@@ -149,8 +149,23 @@ namespace Project
         private void button1_Click(object sender, EventArgs e)
         {
             Form register = new Register();
+
+            register.FormClosing += (s, args) => this.Show();
+            register.Opacity = 0;
             register.Show();
-            this.Hide();
+
+            Timer timer = new Timer();
+            timer.Interval = 30;
+            timer.Tick += (s, args) =>
+            {
+                register.Opacity += 0.1;
+                if (register.Opacity >= 1)
+                {
+                    timer.Stop();
+                    this.Hide();
+                }
+            };
+            timer.Start();
         }
 
         private void label2_Click(object sender, EventArgs e)

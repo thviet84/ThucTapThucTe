@@ -227,6 +227,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="qr-code3.ico" />
+    <None Include="Resources\approved.png" />
+    <None Include="Resources\password.png" />
     <None Include="Resources\registered.png" />
     <None Include="Resources\register.png" />
     <None Include="Resources\writting.png" />

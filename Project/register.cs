@@ -151,8 +151,23 @@ namespace Project
         private void button1_Click(object sender, EventArgs e)
         {
             Form login = new Login();
+           
+            login.FormClosing += (s, args) => this.Show(); 
+            login.Opacity = 0; 
             login.Show();
-            this.Hide();
+
+            Timer timer = new Timer();
+            timer.Interval = 30; 
+            timer.Tick += (s, args) =>
+            {
+                login.Opacity += 0.1; 
+                if (login.Opacity >= 1)
+                {
+                    timer.Stop();
+                    this.Hide();
+                }
+            };
+            timer.Start();
         }
 
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
