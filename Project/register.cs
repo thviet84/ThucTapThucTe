@@ -154,6 +154,15 @@ namespace Project
             login.Show();
             this.Hide();
         }
-       
+
+        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtConfirmMK.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox6_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtConfirmMK.UseSystemPasswordChar = true;
+        }
     }
 }
